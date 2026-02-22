@@ -1,26 +1,26 @@
 #include <iostream>
 using namespace std;
+
 int main()
 {
     int a = 100;
-    cout << &a << endl; // vedo quale indirizzo di memoria viene utlizzato
+    cout << "L'indirizzo di a: " << &a << endl; // vedo quale indirizzo di memoria viene utlizzato
 
     // Inserisco l'indirizzo, che ho stampato nell'esecuzione precedente, sperando che sia lo stesso
-    //int* x = (int*)6422076;
-    int* x = (int*)0x61fe44;
+    int* px = (int*)0x5ffe74;
 
-    cout << x << endl;
+    cout << "px contiene: " << px << endl;
 
-    //mi stampa l'indirizzo in hex
-    cout << "Il valore : " << *x << endl;
+    //l'indirizzo in hex
+    cout << "Il valore contenuto nella locazione di memoria puntata da px: " << *px << endl;
 
     //pero se ci spostiamo di qualche bit nella memoria
-    x = (int*)0x61fe46;
+    px = (int*)0x5ffe78;
 
-    cout << x << endl;
+    cout << "px contiene: " << px << endl;
 
-    //il valore è casuale, puo essere pericoloso di stampare un valore una cella di memoria a caso
-    cout << "Il valore : " << *x << endl;
+    //il valore Ã¨ casuale, puo essere pericoloso di stampare un valore una cella di memoria a caso, il programma si puo fermare!
+        cout << "Il valore contenuto nella locazione di memoria puntata da px: " << *px << endl;
 
     return 0;
 }

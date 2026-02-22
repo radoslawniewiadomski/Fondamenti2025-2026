@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
-//ATTENZIONE IL CODICE E SBAGLIATO
+
+//ATTENZIONE IL CODICE CONTIENE UN ERRORE
+//ATTENZIONE: IL CODICE NON SI COMPILA
+
 struct t
 {
     int x;
@@ -25,7 +28,7 @@ int main()
 
     cout<<*px<<endl;
 
-    px = pt1; //ERRORE!!!
+    px = pt1; //ERRORE!!! Non è consentita l’assegnazione diretta tra puntatori a tipi diversi!
 
     return 0;
 }
