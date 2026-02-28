@@ -13,7 +13,7 @@ void swap1(int &a, int &b) {
 int main() {
     srand(time(NULL));
 
-    // Creazione dell'array con numeri univoci da 0 a 9 in ordine casuale
+    // Creazione dell'array con numeri da 0 a 9 in ordine casuale
     int a[10];
     for (int i = 0; i < 10; ++i)  a[i] = i;
 
@@ -39,7 +39,6 @@ int main() {
 
     for (int i = 0; i < 10; ++i) {
         if (a[i] == num1) ptr1 = &a[i];
-
         if (a[i] == num2) ptr2 = &a[i];
     }
 

@@ -12,8 +12,8 @@ int main() {
     p[1] =&b;
     p[2] =&c;
 
-    cout<<p<<endl;
-    cout<<*p<<endl;
+    cout<<p<<endl; // stampa un indirizzo
+    cout<<*p<<endl; // stampa un'altro indirizzo
+    cout<<**p<<endl; // stampa un valore
 
-    cout<<**p<<endl;
 }

@@ -4,14 +4,16 @@ using namespace std;
 
 //funzione aggiunge 1 a ogni elemento di un array
 
-/*
+
+//versione "array" - primo semestre
+
 void add1(int a [], int size) {
     for (int i=0; i<size; i++)
         a[i] +=1;
 }
 
-*/
 
+//versione "array" - indice è un puntatore
 /*
 void add1(int a [], int size)
 {
@@ -21,13 +23,14 @@ void add1(int a [], int size)
 */
 
 
+//solo puntatori
+/*
 void add1(int* a, int size)
 {
-
     for (int* pi=a; pi<a+size; pi++)
         (*pi)+=1;
 }
-
+*/
 
 int main()
 {

@@ -17,5 +17,5 @@ int main()
     int * pb=&b;
     cout<<pb<<endl;
     int *maggiore = maggiore_indirizzo(pa,pb);
-    cout <<"Il valore puntato da puntatore maggiore="<<*maggiore<<", l'indirizzo maggiore = "<< maggiore;
+    cout <<"Il valore puntato da puntatore maggiore è "<<*maggiore<<", l'indirizzo maggiore è "<< maggiore;
 }

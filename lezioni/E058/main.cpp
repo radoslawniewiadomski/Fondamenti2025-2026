@@ -16,14 +16,14 @@ void incrr(int& p, int n)
 int main()
 {
     int a = 10;
-
-    incrr(a, 3);
+    int b = 2;
+    int c=3;  
+    
+    incrp(&a, b);
     cout<<a<<endl;
 
-
-    incrp(&a, 2);
+    incrr(a, c);
     cout<<a<<endl;
-
 
     return 0;
 }

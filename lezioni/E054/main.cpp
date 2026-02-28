@@ -7,19 +7,13 @@ int main()
     int b =8;
 
     int* pa=&a;
-    //int* pb =&b;
+    
+    cout<<"Il valore a cui punta pa "<<*pa<<endl;
+    pa++; 
 
-    //cout<<pa<<endl;
-    //cout<<pb<<endl;
+    cout<<"Il nuovo valore a cui punta pa "<<*pa; //Attenzione - il valore è diverso da 8!
 
-    cout<<*pa<<endl; //stampa 4 sul terminale
-
-    pa--;
-
-    cout<<*pa<<endl; //cosa viene stampato? Perche?
-
-    cout<<&a<<endl;
-
-    cout<<&b<<endl;
+    //cout << &a << &b;
+    
     return 0;
 }

@@ -1,48 +1,27 @@
 #include <iostream>
 using namespace std;
 
+//ATTENZIONE: FILE CONTIENE UN ERRORE
+
 int main()
 {
-    int a = 11;
-    int b = 12;
-    int c = 13;
+    char* a;
 
-    int* p [3];
+    cin>>a; // ERRORE: rischio di usare un spazio della memoria non allocato
 
-    cout<<&a<<", "<<&b<<", "<<&c<<", "<<endl;
-
-    p[0] =&a;
-    p[1] =&b;
-    p[2] =&c;
-
-/*
-
-    //cambiare tree valori
-    for (int i=0; i < 3; i++)
-    {
-        ( *p[i]        )++;
-    }
-
-*/
-
-     //errore
-     for (int i=0;i < 3; i++){
-         *p[i]++;
-     }
+    cout << a << "Fine";
 
 
-    //STAMPARE  3 VALORI
-    for (int i=0; i < 3; i++)
-    {
-        cout<< *p[i]  <<", ";
-    }
+    /*
 
-    cout <<endl;
+    char b[20];
 
-    //stampare 3 indirizzi
-    for (int i=0; i < 3; i++)
-    {
-        cout<< p[i] <<", ";
-    }
+    cin>>b;
+
+    cout << b << "Fine";
+
+    */
+
+    return 0;
 
 }
