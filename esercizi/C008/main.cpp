@@ -19,7 +19,7 @@ int calcolaPunti(int risultati[][NUM_SQUADRE], int squadraIndex)
         {
             // Se la squadra ha vinto (i punti segnati sono maggiori dei punti subiti), aggiungiamo 3 punti
             if (risultati[squadraIndex][i] > risultati[i][squadraIndex]) punti += 3;
-            // Se la partita è terminata in pareggio, aggiungiamo 1 punto
+            // Se la partita ï¿½ terminata in pareggio, aggiungiamo 1 punto
             else if (risultati[squadraIndex][i] == risultati[i][squadraIndex]) punti += 1;
         }
     }
@@ -32,6 +32,7 @@ int main()
     "Squadra 1", "Squadra 2", "Squadra 3", "Squadra 4",
     "Squadra 5", "Squadra 6", "Squadra 7", "Squadra 8"
 };
+
     // Matrice dei risultati delle partite (inizializzata a 0)
     int risultati[NUM_SQUADRE][NUM_SQUADRE] = {{0}};
 
