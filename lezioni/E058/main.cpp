@@ -17,7 +17,7 @@ int main()
 {
     int a = 10;
     int b = 2;
-    int c=3;  
+    int c = 3;  
     
     incrp(&a, b);
     cout<<a<<endl;

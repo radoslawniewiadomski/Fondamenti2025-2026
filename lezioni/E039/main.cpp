@@ -15,6 +15,7 @@ int main()
             return -1;
         }
         for (int i = 0; i < k; i++) a[i] = i + 1;
+        
         for (int j = 0; j < k; j++) cout << a[j] << ", ";
 
     }

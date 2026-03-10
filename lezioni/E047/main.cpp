@@ -9,14 +9,14 @@ S f2 (W x) {
 }
 
 
-//soluzione del problema
+//soluzione del problema E046
 int main() {
 
  double d1=3.9;
 
- //int d2 = f2(d1) ;
- int d2 = f2<int,double>(d1); //esplicitamente indico dei tipi
 
+ int d2 = f2<int,double>(d1); //esplicitamente indico dei tipi
  cout<<d2;
+ 
  return 0;
 }

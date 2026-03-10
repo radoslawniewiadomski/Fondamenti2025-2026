@@ -15,6 +15,7 @@ int main()
     cout << "Quanti film vuoi inserire? ";
     cin >> n_film;
 
+    
     // Creiamo un array di puntatori per il numero di film specificato dall'utente
     film** films = new film*[n_film];
 
@@ -23,10 +24,10 @@ int main()
         films[i] = new film;  // Allochiamo memoria per ogni film
 
         int n;
-        cout << "Quanto è lungo il titolo del film " << i + 1 << "? ";
+        cout << "Quanto ï¿½ lungo il titolo del film " << i + 1 << "? ";
         cin >> n;
 
-        films[i]->titolo = new char[n];  // Allochiamo memoria per il titolo
+        films[i]->titolo = new char[n+1];  // Allochiamo memoria per il titolo
         cout << "Inserisci il titolo del film " << i + 1 << ": ";
         cin >> films[i]->titolo;
 

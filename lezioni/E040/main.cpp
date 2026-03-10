@@ -27,9 +27,12 @@ int main()
     }
 
     cout << "Titoli dei film: "<< endl;
+
     for (int i = 0; i < numFilm; ++i)
     {
         cout << "Film " << i + 1 << ": " << elencoFilm[i]->titolo << endl;
+        cout << "Film " << i + 1 << ": " << elencoFilm[i]->durata << endl;
+        cout << "Film " << i + 1 << ": " << elencoFilm[i]->anno << endl;
     }
 
     for (int i = 0; i < numFilm; ++i)

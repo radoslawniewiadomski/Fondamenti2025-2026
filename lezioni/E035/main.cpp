@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+//ATTENZIONE QUESTO PROGRAMMA CONTIENE UN ERRORE!!!
+
 struct film
 {
     int id;
@@ -14,7 +16,8 @@ int main()
     film* elencoFilm[3];
     for (int i = 0; i < 3; ++i)
     {
-        film film1;
+        film film1; //ERRORE: film1 viene distrutto alla fine del ciclo!!!
+
         cout << "Inserisci il titolo del film " << i + 1 << ": ";
         cin >> film1.titolo;
         cout << "Inserisci durata (in minuti): ";
