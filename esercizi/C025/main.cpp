@@ -19,7 +19,7 @@ void somma_matrici(int (*A)[dim], int (*B)[dim], int (*C)[dim], int dim) {
 // Funzione per calcolare la somma di due matrici
 void somma_matrici2(int (*A)[dim], int (*B)[dim], int (*C)[dim], int dim) {
     for (int i = 0; i < dim*dim; i++) {
-            *(*(C + i)) = *(*(A + i)) + *(*(B + i));
+           *((*C ) +i ) = *((*A ) + i) + *((*B ) + i );
     }
 }
 
@@ -50,7 +50,7 @@ int main() {
     somma_matrici(A, B, C, dim);
 
     // Stampa della matrice risultante C
-    cout << "La matrice risultante C = A + B, è: " << endl;
+    cout << "La matrice risultante C = A + B, ï¿½: " << endl;
     for (int i = 0; i < dim; i++) {
         for (int j = 0; j < dim; j++) {
             cout << C[i][j] << "\t ";  // Accesso agli elementi tramite puntatore
@@ -62,7 +62,7 @@ int main() {
     somma_matrici2(A, B, C, dim);
 
     // Stampa della matrice risultante C
-    cout << "La matrice risultante C = A + B, è: " << endl;
+    cout << "La matrice risultante C = A + B, ï¿½: " << endl;
     for (int i = 0; i < dim; i++) {
         for (int j = 0; j < dim; j++) {
             cout << C[i][j] << "\t ";  // Accesso agli elementi tramite puntatore
