@@ -19,11 +19,9 @@ void somma_matrici(int (*A)[dim], int (*B)[dim], int (*C)[dim], int dim) {
 // Funzione per calcolare la somma di due matrici
 void somma_matrici2(int (*A)[dim], int (*B)[dim], int (*C)[dim], int dim) {
     for (int i = 0; i < dim*dim; i++) {
-           *((*C ) +i ) = *((*A ) + i) + *((*B ) + i );
+           *((*C ) + i ) = *((*A ) + i) + *((*B ) + i );
     }
 }
-
-
 
 int main() {
     int A[dim][dim], B[dim][dim], C[dim][dim];
