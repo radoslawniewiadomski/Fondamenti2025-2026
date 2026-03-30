@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-struct film
+struct Film
 {
 
     char titolo [20];
@@ -9,7 +9,7 @@ struct film
     int anno;
 };
 
-void stampaFilm(film p)
+void stampaFilm(Film p)
 {
     cout << "Titolo: " << p.titolo << endl;
     cout << "Durata: " << p.durata << " minuti" << endl;
@@ -18,7 +18,7 @@ void stampaFilm(film p)
 
 int main()
 {
-    film p;
+    Film p;
     cout << "Inserisci il titolo (max 20 char): " ;
     cin >>  p.titolo;
     cout << "Inserisci durata: ";

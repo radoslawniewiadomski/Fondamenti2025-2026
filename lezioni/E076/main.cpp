@@ -7,6 +7,7 @@ public:
     Punto();
     Punto(double x, double y);
     Punto(const Punto& p);
+    void stampa();
     void riscala(double f);
 
 private:
@@ -32,6 +33,13 @@ Punto::Punto(const Punto& p)
     _y = p._y;
 }
 
+void Punto::stampa(){
+
+        cout<<_x<<", "<<_y<<endl;
+
+}
+
+
 int main()
 {
     Punto p1;
@@ -44,7 +52,14 @@ int main()
 
     Punto p3(p2);
     // costruttore di copia
-    // x di p3 è 10, y di p3 è 20
+    // x di p3 ï¿½ 10, y di p3 ï¿½ 20
+
+
+    p1.stampa();
+
+    p2.stampa();
+
+    p3.stampa();
 
     return 0;
 }

@@ -22,8 +22,12 @@ int main()
     Punto * pp = &p;
     pp->_x = 100;
     pp->_y = 200;
+    
+    cout << " Il valore di pp->_x prima di chiamare riscala: " << pp->_x << endl; 
+
     pp->riscala(0.5);
-    cout<<pp->_x;
+
+    cout << " Il valore di pp->_x dopo di chiamare riscala: " << pp->_x; 
 
     return 0;
 }

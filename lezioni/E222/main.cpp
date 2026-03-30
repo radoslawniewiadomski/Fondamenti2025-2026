@@ -11,16 +11,22 @@ int add3(){
 
 int main()
 {
+
+    const int n = 10;
+    int ar [n];
+
+
     int c=0;
     int d=0;
     float g=0;
-
+/*
     cout<<"variabili globali"   <<endl;
     cout<<&a<<endl;
     cout<<&b<<endl;
     cout<<&f<<endl;
+*/
 
-    cout<<"variabili locali"   <<endl;
+    cout<<"variabili locali: stack "   <<endl;
     cout<<&c<<endl;
     cout<<&d<<endl;
     cout<<&g<<endl;
@@ -30,12 +36,12 @@ int main()
     int *q = new int;
     float *r = new float;
 
-    cout<<"allocazione dinamica "   <<endl;
+    cout<<"allocazione dinamica : HEAP"   <<endl;
     cout<< p <<endl;
     cout<< q <<endl;
     cout<< r <<endl;
 
-    cout<<"altre variabili locali"   <<endl;
+    cout<<"altre variabili locali : STACK"   <<endl;
     cout<< &p <<endl;
     cout<< &q <<endl;
     cout<< &r <<endl;

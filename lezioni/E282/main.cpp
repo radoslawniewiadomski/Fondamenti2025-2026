@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+//Attenzione questo codice contiene un errore!!
+
 class Punto
 {
 public:
@@ -28,7 +30,7 @@ Punto::Punto(const Punto& p)
 
 int main()
 {
-    Punto* p = new Punto();
+    Punto* p = new Punto(); // manca la definizione di questo construttore
 
 }
 
