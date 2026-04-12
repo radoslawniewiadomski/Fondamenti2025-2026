@@ -1,0 +1,178 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+class Libro {
+    char* _autore;
+    char* _titolo;
+    int _anno;
+
+public:
+  
+    Libro(const char* autore, const char* titolo, int anno);
+    Libro(const Libro& other);   // costruttore di copia
+    ~Libro();
+
+    const char* getAutore() const;
+    void setAutore(const char* autore);
+    const char* getTitolo() const;
+    void setTitolo(const char* titolo);
+    int getAnno() const;
+    void setAnno(int anno);
+
+    void stampa() const;
+};
+
+class Libreria {
+    int _id;
+    Libro** _libri;
+    int _numLibri;
+
+public:
+    Libreria(int id);
+    ~Libreria();
+
+    void inserisciLibro(const Libro& libro);
+    int getNumLibri() const;
+    void stampaLibri() const;
+};
+
+
+
+Libro::Libro(const char* autore, const char* titolo, int anno) : _anno(anno) {
+    _autore = new char[strlen(autore) + 1];
+    strcpy(_autore, autore);
+
+    _titolo = new char[strlen(titolo) + 1];
+    strcpy(_titolo, titolo);
+}
+
+Libro::Libro(const Libro& other) : _anno(other._anno) {
+    if (other._autore) {
+        _autore = new char[strlen(other._autore) + 1];
+        strcpy(_autore, other._autore);
+    } else {
+        _autore = new char[1];
+        _autore[0] = '\0';
+    }
+
+    if (other._titolo) {
+        _titolo = new char[strlen(other._titolo) + 1];
+        strcpy(_titolo, other._titolo);
+    } else {
+        _titolo = new char[1];
+        _titolo[0] = '\0';
+    }
+}
+
+Libro::~Libro() {
+    delete[] _autore;
+    delete[] _titolo;
+}
+
+const char* Libro::getAutore() const {
+    return _autore;
+}
+
+void Libro::setAutore(const char* autore) {
+    delete[] _autore;
+    _autore = new char[strlen(autore) + 1];
+    strcpy(_autore, autore);
+}
+
+const char* Libro::getTitolo() const {
+    return _titolo;
+}
+
+void Libro::setTitolo(const char* titolo) {
+    delete[] _titolo;
+    _titolo = new char[strlen(titolo) + 1];
+    strcpy(_titolo, titolo);
+}
+
+int Libro::getAnno() const {
+    return _anno;
+}
+
+void Libro::setAnno(int anno) {
+    _anno = anno;
+}
+
+void Libro::stampa() const {
+    cout << "Autore: " << _autore << endl;
+    cout << "Titolo: " << _titolo << endl;
+    cout << "Anno: " << _anno << endl;
+}
+
+
+Libreria::Libreria(int id) : _id(id), _libri(nullptr), _numLibri(0) {}
+
+Libreria::~Libreria() {
+    for (int i = 0; i < _numLibri; i++) {
+        delete _libri[i];
+    }
+    delete[] _libri;
+}
+
+void Libreria::inserisciLibro(const Libro& libro) {
+    Libro** temp = new Libro*[_numLibri + 1];
+
+    for (int i = 0; i < _numLibri; i++) {
+        temp[i] = _libri[i];
+    }
+
+    temp[_numLibri] = new Libro(libro);  // usa il costruttore di copia
+
+    delete[] _libri;
+    _libri = temp;
+    _numLibri++;
+}
+
+int Libreria::getNumLibri() const {
+    return _numLibri;
+}
+
+void Libreria::stampaLibri() const {
+    for (int i = 0; i < _numLibri; i++) {
+        cout << "Libro " << i + 1 << ":" << endl;
+        _libri[i]->stampa();
+        cout << endl;
+    }
+}
+
+
+int main() {
+    int numLibri;
+
+    cout << "Quanti libri contiene la libreria? ";
+    cin >> numLibri;
+
+    Libreria libreria(1);
+
+    for (int i = 0; i < numLibri; ++i) {
+        char autore[100];
+        char titolo[100];
+        int anno;
+
+        cout << "Inserisci autore del libro " << i + 1 << ": ";
+        cin >> autore;
+
+        cout << "Inserisci titolo del libro " << i + 1 << ": ";
+        cin >> titolo;
+
+        cout << "Inserisci anno di stampa del libro " << i + 1 << ": ";
+        cin >> anno;
+
+        Libro libro(autore, titolo, anno);
+        libreria.inserisciLibro(libro);
+    }
+
+    cout << endl;
+    cout << "La libreria contiene " << libreria.getNumLibri() << " libri." << endl;
+    cout << endl;
+
+    libreria.stampaLibri();
+
+    return 0;
+}
