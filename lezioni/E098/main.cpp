@@ -2,7 +2,7 @@
 #include <cstring>
 using namespace std;
 
-class film
+class Film
 {
     char* _titolo;
     int _durata;
@@ -10,12 +10,12 @@ class film
 
 public:
     // Costruttori
-    film();
-    film(char* titolo, int durata, int anno);
+    Film();
+    Film(char* titolo, int durata, int anno);
     // Costruttore di copia
-    film(const film& otherFilm);
+    Film(const Film& otherFilm);
     // Distruttore
-    ~film();
+    ~Film();
 
     // Selettori e modificatori
     char* getTitolo() const;
@@ -25,11 +25,13 @@ public:
     int getAnno() const;
     void setAnno(int anno);
 
-    void stampaFilm();
+    void stampaFilm() const;
 };
 
-// Definizioni delle funzioni
-film::film()
+//////////////////////////////////////////////////////////////
+// Definizioni delle metodi
+
+Film::Film()
 {
     _titolo = new char[20];
     strcpy(_titolo, "N/D");
@@ -37,7 +39,7 @@ film::film()
     _anno = 0;
 }
 
-film::film(char* titolo, int durata, int anno)
+Film::Film(char* titolo, int durata, int anno)
 {
     _titolo = new char[strlen(titolo) + 1];
     strcpy(_titolo, titolo);
@@ -45,7 +47,7 @@ film::film(char* titolo, int durata, int anno)
     _anno = anno;
 }
 
-film::film(const film& otherFilm)
+Film::Film(const Film& otherFilm)
 {
     _titolo = new char[strlen(otherFilm._titolo) + 1];
     strcpy(_titolo, otherFilm._titolo);
@@ -53,44 +55,44 @@ film::film(const film& otherFilm)
     _anno = otherFilm._anno;
 }
 
-film::~film()
+Film::~Film()
 {
     delete[] _titolo;
 }
 
-char* film::getTitolo() const
+char* Film::getTitolo() const
 {
     return _titolo;
 }
 
-void film::setTitolo(const char* titolo)
+void Film::setTitolo(const char* titolo)
 {
     delete[] _titolo;
     _titolo = new char[strlen(titolo) + 1];
     strcpy(_titolo, titolo);
 }
 
-int film::getDurata() const
+int Film::getDurata() const
 {
     return _durata;
 }
 
-void film::setDurata(int durata)
+void Film::setDurata(int durata)
 {
     _durata = durata;
 }
 
-int film::getAnno() const
+int Film::getAnno() const
 {
     return _anno;
 }
 
-void film::setAnno(int anno)
+void Film::setAnno(int anno)
 {
     _anno = anno;
 }
 
-void film::stampaFilm()
+void Film::stampaFilm() const
 {
     cout << "Titolo: " << _titolo << endl;
     cout << "Durata: " << _durata << " minuti" << endl;
@@ -103,9 +105,9 @@ void film::stampaFilm()
 int main()
 {
     const int size=3;
-    film* listaFilm[size];
+    Film* listaFilm[size];
 
-    // Richiesta all'utente di inserire i dati per ciascun film
+    // Richiesta all'utente di inserire i dati per ciascun Film
     for (int i = 0; i < size; ++i)
     {
 
@@ -113,7 +115,7 @@ int main()
         cout << "Inserisci la lunghezza del titolo del " << i + 1 << " film: ";
         cin >> lunghezzaTitolo;
 
-        // Allocazione dinamica della memoria per il titolo del film
+        // Allocazione dinamica della memoria per il titolo del Film
         char* titolo = new char[lunghezzaTitolo + 1];
 
         cout << "Inserisci il titolo del " << i + 1 << " film:  (massimo " << lunghezzaTitolo << " caratteri): ";
@@ -127,11 +129,11 @@ int main()
         cout << "Inserisci l'anno di produzione del " << i + 1 << " film: ";
         cin >> anno;
 
-        listaFilm[i] = new film(titolo, durata, anno); // Creazione del nuovo film
+        listaFilm[i] = new Film(titolo, durata, anno); // Creazione del nuovo Film
         delete[] titolo; // Liberiamo la memoria allocata per il titolo
     }
 
-    // Stampa dei film
+    // Stampa dei Film
     for (int i = 0; i < size; ++i)
     {
         cout << "Film " << i + 1 << ":" << endl;

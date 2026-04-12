@@ -2,7 +2,7 @@
 #include <cstring>
 using namespace std;
 
-class film
+class Film
 {
     char* _titolo;
     int _durata;
@@ -10,12 +10,12 @@ class film
 
 public:
     // Costruttori
-    film();
-    film(char* titolo, int durata, int anno);
+    Film();
+    Film(char* titolo, int durata, int anno);
     // Costruttore di copia
-    film(const film& otherFilm);
+    Film(const Film& otherFilm);
     // Distruttore
-    ~film();
+    ~Film();
 
     // Selettori e modificatori
     char* getTitolo() const;
@@ -25,11 +25,14 @@ public:
     int getAnno() const;
     void setAnno(int anno);
 
-    void stampaFilm();
+    void stampaFilm() const;
 };
 
-// Definizioni delle funzioni
-film::film()
+
+//////////////////////////////////////////////////
+// Definizioni delle metodi
+
+Film::Film()
 {
     _titolo = new char[20];
     strcpy(_titolo, "N/D");
@@ -37,7 +40,7 @@ film::film()
     _anno = 0;
 }
 
-film::film(char* titolo, int durata, int anno)
+Film::Film(char* titolo, int durata, int anno)
 {
     _titolo = new char[strlen(titolo) + 1];
     strcpy(_titolo, titolo);
@@ -45,7 +48,7 @@ film::film(char* titolo, int durata, int anno)
     _anno = anno;
 }
 
-film::film(const film& otherFilm)
+Film::Film(const Film& otherFilm)
 {
     _titolo = new char[strlen(otherFilm._titolo) + 1];
     strcpy(_titolo, otherFilm._titolo);
@@ -53,76 +56,80 @@ film::film(const film& otherFilm)
     _anno = otherFilm._anno;
 }
 
-film::~film()
+Film::~Film()
 {
     delete[] _titolo;
 }
 
-char* film::getTitolo() const
+char* Film::getTitolo() const
 {
     return _titolo;
 }
 
-void film::setTitolo(const char* titolo)
+void Film::setTitolo(const char* titolo)
 {
     delete[] _titolo;
     _titolo = new char[strlen(titolo) + 1];
     strcpy(_titolo, titolo);
 }
 
-int film::getDurata() const
+int Film::getDurata() const
 {
     return _durata;
 }
 
-void film::setDurata(int durata)
+void Film::setDurata(int durata)
 {
     _durata = durata;
 }
 
-int film::getAnno() const
+int Film::getAnno() const
 {
     return _anno;
 }
 
-void film::setAnno(int anno)
+void Film::setAnno(int anno)
 {
     _anno = anno;
 }
 
-void film::stampaFilm()
+void Film::stampaFilm() const
 {
     cout << "Titolo: " << _titolo << endl;
     cout << "Durata: " << _durata << " minuti" << endl;
     cout << "Anno: " << _anno << endl;
 }
 
-/////////////////////////////////////////////////////////////////////////////
 
-// Funzione per trovare il film più vecchio nell'array
-film trovaFilmPiuVecchio(film* listaFilm[], int size) {
-    film filmPiuVecchio = *listaFilm[0]; // Supponiamo il primo film come il più vecchio
+//////////////////////////////////////////////////
+// Definizioni delle funzioni esterne
+
+// Funzione per trovare il Film piï¿½ vecchio nell'array
+
+Film& trovaFilmPiuVecchio(Film* listaFilm[], int size) {
+    Film FilmPiuVecchio = *listaFilm[0]; // Supponiamo il primo Film come il piï¿½ vecchio
 
     for (int i = 1; i < size; i++) {
-        if (listaFilm[i]->getAnno() < filmPiuVecchio.getAnno()) {
-            filmPiuVecchio = *listaFilm[i];
+        if (listaFilm[i]->getAnno() < FilmPiuVecchio.getAnno()) {
+            FilmPiuVecchio = *listaFilm[i];
         }
     }
 
-    return filmPiuVecchio;
+    return FilmPiuVecchio;
 }
 
-// Funzione per trovare il film più lungo nell'array
-film* trovaFilmPiuLungo(film* listaFilm[], int size) {
-    film* filmPiuLungo = listaFilm[0]; // Supponiamo il primo film come il più lungo
+// Funzione per trovare il Film piï¿½ lungo nell'array
+
+Film* trovaFilmPiuLungo(Film* listaFilm[], int size) {
+    Film* FilmPiuLungo = listaFilm[0]; // Supponiamo il primo Film come il piï¿½ lungo
 
     for (int i = 1; i < size; i++) {
-        if (listaFilm[i]->getDurata() > filmPiuLungo->getDurata()) {
-            filmPiuLungo = listaFilm[i];
+        if (listaFilm[i]->getDurata() > FilmPiuLungo->getDurata()) {
+            FilmPiuLungo = listaFilm[i];
         }
     }
 
-    return filmPiuLungo;
+    return FilmPiuLungo;
 }
 
 
@@ -133,52 +140,52 @@ film* trovaFilmPiuLungo(film* listaFilm[], int size) {
 int main() {
     int numFilm;
 
-    cout << "Quanti film vuoi inserire? ";
+    cout << "Quanti Film vuoi inserire? ";
     cin >> numFilm;
 
-    film** listaFilm = new film*[numFilm]; // Array di puntatori a film
+    Film** listaFilm = new Film*[numFilm]; // Array di puntatori a Film
 
-    // Richiesta all'utente di inserire i dati per ciascun film
+    // Richiesta all'utente di inserire i dati per ciascun Film
     for (int i = 0; i < numFilm; i++) {
         int lunghezzaTitolo;
-        cout << "Inserisci la lunghezza del titolo del " << i + 1 << " film: ";
+        cout << "Inserisci la lunghezza del titolo del " << i + 1 << " Film: ";
         cin >> lunghezzaTitolo;
 
-        // Allocazione dinamica della memoria per il titolo del film
+        // Allocazione dinamica della memoria per il titolo del Film
         char* titolo = new char[lunghezzaTitolo + 1];
 
-        cout << "Inserisci il titolo del " << i + 1 << " film: (massimo " << lunghezzaTitolo << " caratteri): ";
+        cout << "Inserisci il titolo del " << i + 1 << " Film: (massimo " << lunghezzaTitolo << " caratteri): ";
         cin >> titolo;
 
         int durata, anno;
 
-        cout << "Inserisci la durata in minuti del " << i + 1 << " film: ";
+        cout << "Inserisci la durata in minuti del " << i + 1 << " Film: ";
         cin >> durata;
 
-        cout << "Inserisci l'anno di produzione del " << i + 1 << " film: ";
+        cout << "Inserisci l'anno di produzione del " << i + 1 << " Film: ";
         cin >> anno;
 
-        listaFilm[i] = new film(titolo, durata, anno); // Creazione del nuovo film
+        listaFilm[i] = new Film(titolo, durata, anno); // Creazione del nuovo Film
         delete[] titolo; // Liberiamo la memoria allocata per il titolo
     }
 
-    // Stampa dei film
+    // Stampa dei Film
     for (int i = 0; i < numFilm; i++) {
         cout << "Film " << i + 1 << ":" << endl;
         listaFilm[i]->stampaFilm();
         cout << endl;
     }
 
-    // Trova e stampa il film più vecchio
-    film filmPiuVecchio = trovaFilmPiuVecchio(listaFilm, numFilm);
-    cout << "Il film piu vecchio e: " << endl;
-    filmPiuVecchio.stampaFilm();
+    // Trova e stampa il Film piï¿½ vecchio
+    Film FilmPiuVecchio = trovaFilmPiuVecchio(listaFilm, numFilm);
+    cout << "Il Film piu vecchio e: " << endl;
+    FilmPiuVecchio.stampaFilm();
     cout << endl;
 
-    // Trova e stampa il film più lungo
-    film* filmPiuLungo = trovaFilmPiuLungo(listaFilm, numFilm);
-    cout << "Il film piu lungo e: " << endl;
-    filmPiuLungo->stampaFilm();
+    // Trova e stampa il Film piï¿½ lungo
+    Film* FilmPiuLungo = trovaFilmPiuLungo(listaFilm, numFilm);
+    cout << "Il Film piu lungo e: " << endl;
+    FilmPiuLungo->stampaFilm();
     cout << endl;
 
     // Deallocazione della memoria

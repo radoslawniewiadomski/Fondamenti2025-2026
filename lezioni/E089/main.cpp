@@ -76,5 +76,6 @@ int main()
     cout << "Coordinate: (" << p2->getX() << ", " << p2->getY() << ")" << endl;
 
     delete p2;
+    
     return 0;
 }

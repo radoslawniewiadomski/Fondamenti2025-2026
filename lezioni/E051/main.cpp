@@ -29,8 +29,8 @@ int main()
     int a[5] = {3, 2, 6, 1, 4};
     Impiegato imp[2] = {{"Mario","Rossi"},{"Paola","Bianchi"}};
 
-    BubbleSort(a, 5);		// OK!
-    BubbleSort(imp, 2);  	// ERRORE!   L’operatore > non è definito per le strutture!
+    //BubbleSort(a, 5);		// OK!
+    BubbleSort(imp, 2);  	// ERRORE!   Lï¿½operatore > non ï¿½ definito per le strutture!
 
     for (int i=0; i<2; i++)
          cout<<a[i]<<", ";

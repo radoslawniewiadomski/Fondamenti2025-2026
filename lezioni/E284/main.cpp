@@ -43,7 +43,7 @@ void Punto::cambiaNome(const char *x) {
 }
 
 void Punto::stampaNome() {
-    cout << c;
+    cout << "Il nome è: "<< c << endl;
 }
 
 int main() {
@@ -52,8 +52,9 @@ int main() {
 
     //creo la copia di punto1 e la chiamo punto2
     Punto punto2 (punto1);
-
     punto1.cambiaNome("Quattro!");
+
+    punto1.stampaNome();
     punto2.stampaNome();
     return 0;
 }

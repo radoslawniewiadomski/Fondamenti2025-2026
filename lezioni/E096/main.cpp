@@ -20,11 +20,11 @@ public:
     void setY(double y);
 
     // selettori
-    double getX();
-    double getY();
+    double getX() const;
+    double getY() const;
 
     // altri metodi
-    void stampaPunto();
+    void stampaPunto() const;
 };
 
 // definizione dei metodi
@@ -58,17 +58,17 @@ void Punto::setY(double y)
     _y = y;
 }
 
-double Punto::getX()
+double Punto::getX() const
 {
     return _x;
 }
 
-double Punto::getY()
+double Punto::getY() const
 {
     return _y;
 }
 
-void Punto::stampaPunto()
+void Punto::stampaPunto() const
 {
     cout << "Coordinate del punto: (" << _x << ", " << _y << ")" << endl;
 }
@@ -112,7 +112,7 @@ int main()
     Punto media = calcolaMediaPunti(punti, 10);
 
     // Stampa della media delle coordinate
-    cout << "La media delle coordinate dei punti è: (" << media.getX() << ", " << media.getY() << ")" << endl;
+    cout << "La media delle coordinate dei punti e: (" << media.getX() << ", " << media.getY() << ")" << endl;
 
     // Deallocazione della memoria
     for (int i = 0; i < 10; ++i)

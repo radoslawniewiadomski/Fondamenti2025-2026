@@ -1,46 +1,34 @@
 #include <iostream>
-#include <cstring>
 using namespace std;
-class Punto
-{
-    double _x;
-    double _y;
-    char  c [20];
 
+class PuntoRef {
 public:
-    Punto();
-    Punto(double x, double y);
-    void cambiaNome(char *x);
-    void stampaNome ();
+    PuntoRef(double &x, double &y);  // costruttore con parametri
+
+    double& _x;  // riferimento
+    double& _y;  // riferimento
 };
 
-Punto::Punto()
-{
-    _x = 0.0;
-    _y = 0.0;
-    strcpy(c,"Uno");
-}
+PuntoRef::PuntoRef(double &x, double &y) : _x(x), _y(y) {}
 
-void Punto::cambiaNome(char *x)
-{
-    strcpy(c,x);
-}
+int main() {
+    double a = 1.0;
+    double b = 3.0;
 
-void Punto::stampaNome()
-{
-    cout<<c;
-}
+    PuntoRef punto(a, b);
+    cout << "Prima: (" << punto._x << ", " << punto._y << ")\n";
 
-int main()
-{
-    Punto punto1;
-    punto1.cambiaNome("Due");
-    Punto punto2;
+    // Modifico le variabili originali
+    a = 5.0;
+    b = 6.0;
 
-    punto2.cambiaNome("Tre");
-    punto2=punto1;
+    cout << "Dopo modifica esterna: (" << punto._x << ", " << punto._y << ")\n";
 
-    punto1.cambiaNome("Quattro");
-    punto2.stampaNome();
+    // Modifico tramite l'oggetto
+    punto._x = 10.0;
+    punto._y = 20.0;
+
+    cout << "Dopo modifica tramite oggetto: a=" << a << ", b=" << b << "\n";
+
     return 0;
 }

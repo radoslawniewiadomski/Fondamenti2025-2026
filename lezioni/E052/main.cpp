@@ -12,7 +12,7 @@ S f2 (W x, S y)
 int main()
 {
     double d1=4.2;
-    double d2=4.1;
+    int d2 = 4.1;
 
     cout << f2(d1,d2) << endl;
 

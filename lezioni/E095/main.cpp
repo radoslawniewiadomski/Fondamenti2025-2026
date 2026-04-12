@@ -20,11 +20,11 @@ public:
     void setY(double y);
 
     // selettori
-    double getX();
-    double getY();
+    double getX() const;
+    double getY() const;
 
     // altri metodi
-    void stampaPunto();
+    void stampaPunto() const;
 };
 
 // definizione dei metodi
@@ -58,17 +58,17 @@ void Punto::setY(double y)
     _y = y;
 }
 
-double Punto::getX()
+double Punto::getX() const
 {
     return _x;
 }
 
-double Punto::getY()
+double Punto::getY() const
 {
     return _y;
 }
 
-void Punto::stampaPunto()
+void Punto::stampaPunto() const
 {
     cout << "Coordinate del punto: (" << _x << ", " << _y << ")" << endl;
 }
@@ -86,10 +86,10 @@ void calcolaMediaCoordinate(Punto punti[], int size)
     }
     double mediaX = sommaX / size;
     double mediaY = sommaY / size;
-    cout << "La media delle coordinate dei punti è: (" << mediaX << ", " << mediaY << ")" << endl;
+    cout << "La media delle coordinate dei punti e': (" << mediaX << ", " << mediaY << ")" << endl;
 }
 
-/* VERSIONE 2
+
 Punto calcolaMediaPunti(Punto punti[], int size) {
     double sommaX = 0, sommaY = 0;
 
@@ -103,7 +103,7 @@ Punto calcolaMediaPunti(Punto punti[], int size) {
 
     return Punto(mediaX, mediaY);
 }
-*/
+
 
 
 int main()
@@ -127,13 +127,11 @@ int main()
     // Calcolo e stampa la media delle coordinate
     calcolaMediaCoordinate(punti, 10);
 
-    /* VERSIONE 2
-    // Calcolo la media delle coordinate
+    // VERSIONE 2
+
     Punto media = calcolaMediaPunti(punti, 10);
-
     // Stampa la media delle coordinate
-    cout << "La media delle coordinate dei punti è: (" << media.getX() << ", " << media.getY() << ")" << endl;
-    */
-
+    cout << "La media delle coordinate dei punti e: (" << media.getX() << ", " << media.getY() << ")" << endl;
+   
     return 0;
 }

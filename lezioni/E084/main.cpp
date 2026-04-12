@@ -15,8 +15,7 @@ Punto::Punto() : _x(1.0), _y(1.0) {}  // Inizializzazione tramite lista di inizi
 Punto::Punto(double x, double y) : _x(x), _y(y) {}  // Inizializzazione tramite lista di inizializzazione
 
 
-
-//QUESTO è un errore, non è possibile inizializzare atributi const nel corpo del costruttore
+//Il codice commentato coniene degli errori, non ï¿½ possibile inizializzare atributi const nel corpo del costruttore
 
 /*
 Punto::Punto()
@@ -24,7 +23,6 @@ Punto::Punto()
     _x = 1.0;
     _y = 1.0;
 }
-
 
 Punto::Punto(double x, double y){
     _x = x;

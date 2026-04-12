@@ -1,6 +1,9 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
+
+//Attenzione questo codice contiene un errore! Vedi E083 per la soluzione
+
 class Punto
 {
     double _x;
@@ -42,6 +45,7 @@ int main() {
     punto2=punto1;
 
     punto1.cambiaNome("Quattro");
+
     punto2.stampaNome();
     return 0;
 }

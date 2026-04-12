@@ -12,8 +12,12 @@ public:
     // Costruttori
     Libro();
     Libro(const char* autore, const char* titolo, int anno);
+    Libro(const Libro& other);              // costruttore di copia
+    Libro& operator=(const Libro& other);   // operatore di assegnazione
+
     // Distruttore
     ~Libro();
+
     // Metodi di accesso
     const char* getAutore() const;
     void setAutore(const char* autore);
@@ -21,6 +25,8 @@ public:
     void setTitolo(const char* titolo);
     int getAnno() const;
     void setAnno(int anno);
+
+    void stampa() const;
 };
 
 class Libreria {
@@ -31,22 +37,73 @@ class Libreria {
 public:
     // Costruttore
     Libreria(int id);
+
     // Distruttore
     ~Libreria();
+
     // Metodo per inserire un libro nella libreria
     void inserisciLibro(const Libro& libro);
+
     // Metodo per ottenere il numero di libri nella libreria
     int getNumLibri() const;
+
+    void stampaLibri() const;
 };
 
-// Definizioni dei metodi della classe Libro
+
+// =========================
+// Definizioni classe Libro
+// =========================
+
 Libro::Libro() : _autore(nullptr), _titolo(nullptr), _anno(0) {}
 
 Libro::Libro(const char* autore, const char* titolo, int anno) : _anno(anno) {
     _autore = new char[strlen(autore) + 1];
     strcpy(_autore, autore);
+
     _titolo = new char[strlen(titolo) + 1];
     strcpy(_titolo, titolo);
+}
+
+Libro::Libro(const Libro& other) : _anno(other._anno) {
+    if (other._autore != nullptr) {
+        _autore = new char[strlen(other._autore) + 1];
+        strcpy(_autore, other._autore);
+    } else {
+        _autore = nullptr;
+    }
+
+    if (other._titolo != nullptr) {
+        _titolo = new char[strlen(other._titolo) + 1];
+        strcpy(_titolo, other._titolo);
+    } else {
+        _titolo = nullptr;
+    }
+}
+
+Libro& Libro::operator=(const Libro& other) {
+    if (this != &other) {
+        delete[] _autore;
+        delete[] _titolo;
+
+        _anno = other._anno;
+
+        if (other._autore != nullptr) {
+            _autore = new char[strlen(other._autore) + 1];
+            strcpy(_autore, other._autore);
+        } else {
+            _autore = nullptr;
+        }
+
+        if (other._titolo != nullptr) {
+            _titolo = new char[strlen(other._titolo) + 1];
+            strcpy(_titolo, other._titolo);
+        } else {
+            _titolo = nullptr;
+        }
+    }
+
+    return *this;
 }
 
 Libro::~Libro() {
@@ -82,23 +139,32 @@ void Libro::setAnno(int anno) {
     _anno = anno;
 }
 
-// Definizioni dei metodi della classe Libreria
+void Libro::stampa() const {
+    cout << "Autore: " << _autore << endl;
+    cout << "Titolo: " << _titolo << endl;
+    cout << "Anno: " << _anno << endl;
+}
+
+
+// ============================
+// Definizioni classe Libreria
+// ============================
+
 Libreria::Libreria(int id) : _id(id), _libri(nullptr), _numLibri(0) {}
 
 Libreria::~Libreria() {
-    for (int i = 0; i < _numLibri; ++i) {
-        delete[] _libri[i].getAutore();
-        delete[] _libri[i].getTitolo();
-    }
     delete[] _libri;
 }
 
 void Libreria::inserisciLibro(const Libro& libro) {
     Libro* temp = new Libro[_numLibri + 1];
+
     for (int i = 0; i < _numLibri; ++i) {
-        temp[i] = _libri[i];
+        temp[i] = _libri[i];   // usa operator=
     }
-    temp[_numLibri] = libro;
+
+    temp[_numLibri] = libro;   // usa operator=
+
     delete[] _libri;
     _libri = temp;
     _numLibri++;
@@ -108,13 +174,26 @@ int Libreria::getNumLibri() const {
     return _numLibri;
 }
 
+void Libreria::stampaLibri() const {
+    for (int i = 0; i < _numLibri; ++i) {
+        cout << "Libro " << i + 1 << ":" << endl;
+        _libri[i].stampa();
+        cout << endl;
+    }
+}
+
+
+// =====
+// main
+// =====
+
 int main() {
     int numLibri;
 
     cout << "Quanti libri contiene la libreria? ";
     cin >> numLibri;
 
-    Libreria libreria(1); // Creiamo una libreria con ID 1
+    Libreria libreria(1);
 
     for (int i = 0; i < numLibri; ++i) {
         char autore[100];
@@ -138,8 +217,11 @@ int main() {
         libreria.inserisciLibro(libro);
     }
 
+    cout << endl;
     cout << "La libreria contiene " << libreria.getNumLibri() << " libri." << endl;
+    cout << endl;
+
+    libreria.stampaLibri();
 
     return 0;
 }
-

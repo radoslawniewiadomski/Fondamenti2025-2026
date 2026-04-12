@@ -20,8 +20,10 @@ int main()
 
     }
     delete[] a; //Errore: controlla utlizzo di memoria in Task Manager
+
     //per correggere questo problema sposta delete dentro il ciclo for
 
+   
     return 0;
 
 }

@@ -1,13 +1,12 @@
 #include <iostream>
 using namespace std;
 
-//partendo da W281 utilizzo le liste di inizialisazione
-
 class Punto {
 public:
     Punto();
     Punto(double x, double y);
     Punto(const Punto& p);
+
     double _x;
     double _y;
 };

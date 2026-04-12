@@ -3,169 +3,211 @@
 
 using namespace std;
 
-class Libro
-{
-    char* autore;
-    char* titolo;
-    int anno;
+class Libro {
+    char* _autore;
+    char* _titolo;
+    int _anno;
 
 public:
     // Costruttori
     Libro();
     Libro(const char* autore, const char* titolo, int anno);
-    // Costruttore di copia
-    Libro(const Libro& otherLibro);
+    Libro(const Libro& other);              // costruttore di copia
+    Libro& operator=(const Libro& other);   // operatore di assegnazione
+
     // Distruttore
     ~Libro();
-    // Selettori e modificatori
+
+    // Metodi di accesso
     const char* getAutore() const;
     void setAutore(const char* autore);
     const char* getTitolo() const;
     void setTitolo(const char* titolo);
     int getAnno() const;
     void setAnno(int anno);
+
+    void stampa() const;
 };
 
-// Definizioni delle funzioni di Libro
-Libro::Libro()
-{
-    autore = new char[1];
-    strcpy(autore, "");
-    titolo = new char[1];
-    strcpy(titolo, "");
-    anno = 0;
-}
-
-Libro::Libro(const char* autore, const char* titolo, int anno)
-{
-    this->autore = new char[strlen(autore) + 1];
-    strcpy(this->autore, autore);
-    this->titolo = new char[strlen(titolo) + 1];
-    strcpy(this->titolo, titolo);
-    this->anno = anno;
-}
-
-Libro::Libro(const Libro& otherLibro)
-{
-    autore = new char[strlen(otherLibro.autore) + 1];
-    strcpy(autore, otherLibro.autore);
-    titolo = new char[strlen(otherLibro.titolo) + 1];
-    strcpy(titolo, otherLibro.titolo);
-    anno = otherLibro.anno;
-}
-
-Libro::~Libro()
-{
-    delete[] autore;
-    delete[] titolo;
-}
-
-const char* Libro::getAutore() const
-{
-    return autore;
-}
-
-void Libro::setAutore(const char* autore)
-{
-    delete[] this->autore;
-    this->autore = new char[strlen(autore) + 1];
-    strcpy(this->autore, autore);
-}
-
-const char* Libro::getTitolo() const
-{
-    return titolo;
-}
-
-void Libro::setTitolo(const char* titolo)
-{
-    delete[] this->titolo;
-    this->titolo = new char[strlen(titolo) + 1];
-    strcpy(this->titolo, titolo);
-}
-
-int Libro::getAnno() const
-{
-    return anno;
-}
-
-void Libro::setAnno(int anno)
-{
-    this->anno = anno;
-}
-
-class Libreria
-{
-    int id;
-    Libro* libri;
-    int numLibri;
+class Libreria {
+    int _id;
+    Libro* _libri;
+    int _numLibri;
 
 public:
     // Costruttore
     Libreria(int id);
+
     // Distruttore
     ~Libreria();
+
     // Metodo per inserire un libro nella libreria
     void inserisciLibro(const Libro& libro);
+
     // Metodo per ottenere il numero di libri nella libreria
     int getNumLibri() const;
-    // Metodo per trovare il libro più vecchio nella libreria
-    Libro* trovaLibroPiuVecchio() const;
+
+    void stampaLibri() const;
+
+Libro* trovaLibroPiuVecchio() const;
+
 };
 
-// Definizioni delle funzioni di Libreria
-Libreria::Libreria(int id)
-{
-    this->id = id;
-    libri = nullptr;
-    numLibri = 0;
+
+// =========================
+// Definizioni classe Libro
+// =========================
+
+Libro::Libro() : _autore(nullptr), _titolo(nullptr), _anno(0) {}
+
+Libro::Libro(const char* autore, const char* titolo, int anno) : _anno(anno) {
+    _autore = new char[strlen(autore) + 1];
+    strcpy(_autore, autore);
+
+    _titolo = new char[strlen(titolo) + 1];
+    strcpy(_titolo, titolo);
 }
 
-Libreria::~Libreria()
-{
-    delete[] libri;
-}
-
-void Libreria::inserisciLibro(const Libro& libro)
-{
-    Libro* temp = new Libro[numLibri + 1];
-
-    for (int i = 0; i < numLibri; ++i)
-    {
-        temp[i] = libri[i];
+Libro::Libro(const Libro& other) : _anno(other._anno) {
+    if (other._autore != nullptr) {
+        _autore = new char[strlen(other._autore) + 1];
+        strcpy(_autore, other._autore);
+    } else {
+        _autore = nullptr;
     }
 
-    temp[numLibri] = libro;
-
-    delete[] libri;
-    libri = temp;
-    numLibri++;
+    if (other._titolo != nullptr) {
+        _titolo = new char[strlen(other._titolo) + 1];
+        strcpy(_titolo, other._titolo);
+    } else {
+        _titolo = nullptr;
+    }
 }
 
-int Libreria::getNumLibri() const
-{
-    return numLibri;
+Libro& Libro::operator=(const Libro& other) {
+    if (this != &other) {
+        delete[] _autore;
+        delete[] _titolo;
+
+        _anno = other._anno;
+
+        if (other._autore != nullptr) {
+            _autore = new char[strlen(other._autore) + 1];
+            strcpy(_autore, other._autore);
+        } else {
+            _autore = nullptr;
+        }
+
+        if (other._titolo != nullptr) {
+            _titolo = new char[strlen(other._titolo) + 1];
+            strcpy(_titolo, other._titolo);
+        } else {
+            _titolo = nullptr;
+        }
+    }
+
+    return *this;
 }
+
+Libro::~Libro() {
+    delete[] _autore;
+    delete[] _titolo;
+}
+
+const char* Libro::getAutore() const {
+    return _autore;
+}
+
+void Libro::setAutore(const char* autore) {
+    delete[] _autore;
+    _autore = new char[strlen(autore) + 1];
+    strcpy(_autore, autore);
+}
+
+const char* Libro::getTitolo() const {
+    return _titolo;
+}
+
+void Libro::setTitolo(const char* titolo) {
+    delete[] _titolo;
+    _titolo = new char[strlen(titolo) + 1];
+    strcpy(_titolo, titolo);
+}
+
+int Libro::getAnno() const {
+    return _anno;
+}
+
+void Libro::setAnno(int anno) {
+    _anno = anno;
+}
+
+void Libro::stampa() const {
+    cout << "Autore: " << _autore << endl;
+    cout << "Titolo: " << _titolo << endl;
+    cout << "Anno: " << _anno << endl;
+}
+
+
+// ============================
+// Definizioni classe Libreria
+// ============================
+
+Libreria::Libreria(int id) : _id(id), _libri(nullptr), _numLibri(0) {}
+
+Libreria::~Libreria() {
+    delete[] _libri;
+}
+
+void Libreria::inserisciLibro(const Libro& libro) {
+    Libro* temp = new Libro[_numLibri + 1];
+
+    for (int i = 0; i < _numLibri; ++i) {
+        temp[i] = _libri[i];   // usa operator=
+    }
+
+    temp[_numLibri] = libro;   // usa operator=
+
+    delete[] _libri;
+    _libri = temp;
+    _numLibri++;
+}
+
+int Libreria::getNumLibri() const {
+    return _numLibri;
+}
+
+void Libreria::stampaLibri() const {
+    for (int i = 0; i < _numLibri; ++i) {
+        cout << "Libro " << i + 1 << ":" << endl;
+        _libri[i].stampa();
+        cout << endl;
+    }
+}
+
 
 Libro* Libreria::trovaLibroPiuVecchio() const
 {
-    if (numLibri == 0)
+    if (_numLibri == 0)
     {
-        return nullptr; // Se la libreria è vuota, restituisce nullptr
+        return nullptr; // Se la libreria ï¿½ vuota, restituisce nullptr
     }
 
-    Libro* libroPiuVecchio = &libri[0]; // Supponiamo il primo libro come il più vecchio
+    Libro* libroPiuVecchio = &_libri[0]; // Supponiamo il primo libro come il piï¿½ vecchio
 
-    for (int i = 1; i < numLibri; ++i)
+    for (int i = 1; i < _numLibri; ++i)
     {
-        if (libri[i].getAnno() < libroPiuVecchio->getAnno())
+        if (_libri[i].getAnno() < libroPiuVecchio->getAnno())
         {
-            libroPiuVecchio = &libri[i];
+            libroPiuVecchio = &_libri[i];
         }
     }
 
     return libroPiuVecchio;
 }
+
+
+
 
 int main()
 {
@@ -197,7 +239,7 @@ int main()
 
     cout << "La libreria contiene " << libreria.getNumLibri() << " libri." << endl;
 
-    // Troviamo e stampiamo il libro più vecchio nella libreria
+    // Troviamo e stampiamo il libro piï¿½ vecchio nella libreria
     const Libro* libroPiuVecchio = libreria.trovaLibroPiuVecchio();
     if (libroPiuVecchio != nullptr)
     {

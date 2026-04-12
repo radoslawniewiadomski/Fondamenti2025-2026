@@ -14,7 +14,6 @@ int main() {
 
  double d1=3.9;
 
-
  int d2 = f2<int,double>(d1); //esplicitamente indico dei tipi
  cout<<d2;
  
