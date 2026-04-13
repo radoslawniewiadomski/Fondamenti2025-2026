@@ -28,6 +28,7 @@ Punto::Punto(double x, double y){
     _x = x;
     _y = y;
 }
+
 */
 
 int main() {

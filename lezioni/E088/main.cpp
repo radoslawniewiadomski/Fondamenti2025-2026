@@ -99,7 +99,8 @@ void Film::stampaFilm()
 
 ///////////////////////////////////////////
 
-//il nuovo metodo
+//il nuova funzione 
+
 Film creaSequel(const Film& f, int numero)
 {
     char* nuovoTitolo = new char[strlen(f.getTitolo()) + 3];

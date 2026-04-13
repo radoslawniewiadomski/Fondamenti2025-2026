@@ -46,6 +46,7 @@ int main() {
     Punto punto2 (punto1);
 
     punto1.cambiaNome("Quattro!");
+    punto1.stampaNome();
     punto2.stampaNome();
     return 0;
 }
