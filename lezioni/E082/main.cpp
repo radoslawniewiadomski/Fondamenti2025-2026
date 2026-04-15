@@ -13,7 +13,7 @@ class Punto
 public:
     Punto();
     Punto(double x, double y);
-    void cambiaNome(char *x);
+    void cambiaNome(const char *x);
     void stampaNome ();
 };
 
@@ -25,7 +25,7 @@ Punto::Punto()
     strcpy(c,"Uno");
 }
 
-void Punto::cambiaNome(char *x)
+void Punto::cambiaNome(const char *x)
 {
     delete[] c;
     c = new char[strlen(x) + 1];
@@ -42,7 +42,7 @@ int main() {
     Punto punto2;
 
     punto2.cambiaNome("Tre");
-    
+
     punto2=punto1;
 
     punto1.cambiaNome("Quattro");
