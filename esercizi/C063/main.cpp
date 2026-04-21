@@ -159,7 +159,7 @@ double distanza(const Punto3D& p1, const Punto3D& p2) {
 
 
 int main() {
-    ifstream fin("d:\\punti3D.txt");
+    ifstream fin("d:\\dati3D.txt");
     if (!fin) {
         cerr << "Impossibile aprire il file di input." << endl;
         return 1;
@@ -183,7 +183,7 @@ int main() {
     }
     fin.close();
 
-    // Calcolo della media della velocità con tecnica di finestra scorrevole
+    // Calcolo della media della velocitï¿½ con tecnica di finestra scorrevole
     const int finestra = 15;
     cout << "Velocita per ogni finestra di 15 punti:" << endl;
     for (int i = 0; i <= numPunti - finestra; ++i) {

@@ -84,6 +84,7 @@ Punto Punto::operator-()
 {
     return Punto(-_x, -_y);
 }
+
 */
 //versione 2
 
@@ -97,7 +98,7 @@ Punto Punto::operator-() {
 
 int main()
 {
-    Punto p1  (10, 10);
+    Punto p1  (5, 10);
     p1.stampaPunto();
 
     Punto p2=-p1;

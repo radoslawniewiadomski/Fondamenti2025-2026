@@ -145,7 +145,7 @@ int main()
     Film mioFilm("Inception", 148, 2010);
     mioFilm.stampaFilm();
 
-    Film FilmInvertito = !mioFilm;
+    Film FilmInvertito = -mioFilm;
     cout << "Titolo invertito: " << FilmInvertito.getTitolo() << endl;
 
     return 0;

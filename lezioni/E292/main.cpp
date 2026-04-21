@@ -42,7 +42,6 @@ private:
 int main()
 {
     Punto p;
-
     p.setX(4.0).setY(3.5);
     p.stampa();
     return 0;

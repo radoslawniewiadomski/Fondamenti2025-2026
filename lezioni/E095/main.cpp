@@ -125,7 +125,7 @@ int main()
     }
 
     // Calcolo e stampa la media delle coordinate
-    calcolaMediaCoordinate(punti, 10);
+    //calcolaMediaCoordinate(punti, 10);
 
     // VERSIONE 2
 

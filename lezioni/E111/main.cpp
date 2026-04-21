@@ -15,10 +15,7 @@ public:
 
     // Costruttore di copia
     Film(const Film& otherFilm);
-
-    // Operatore di assegnazione
-    Film& operator=(const Film& otherFilm);
-
+  
     // Distruttore
     ~Film();
 
@@ -32,7 +29,12 @@ public:
 
     // Operatori
     Film operator+(const Film& other) const;
+    
     Film& operator+=(const Film& other);
+    
+    Film& operator=(const Film& otherFilm);
+
+
 
     void stampaFilm() const;
 };
