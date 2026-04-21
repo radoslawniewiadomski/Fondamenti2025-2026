@@ -3,7 +3,7 @@
 using namespace std;
 
 
-class film
+class Film
 {
     char* _titolo;
     int _durata;
@@ -11,14 +11,14 @@ class film
 
 public:
     // Costruttori
-    film();
-    film(char* titolo, int durata, int anno);
+    Film();
+    Film(char* titolo, int durata, int anno);
     // Distruttore
-    ~film();
+    ~Film();
 
     //operatori
-    int operator>(const film& film2) const ;
-    film& operator=(const film& otherFilm);
+    int operator>(const Film& Film2) const ;
+    Film& operator=(const Film& otherFilm);
 
 
     // Selettori e modificatori
@@ -33,7 +33,7 @@ public:
 };
 
 // Definizioni dei metodi
-film::film()
+Film::Film()
 {
     _titolo = new char[20];
     strcpy(_titolo, "N/D");
@@ -41,14 +41,14 @@ film::film()
     _anno = 0;
 }
 
-int film::operator>(const film& film2) const
+int Film::operator>(const Film& Film2) const
 {
-    // Confronto sulla durata dei film
-    if (getDurata() > film2.getDurata()) return true;
+    // Confronto sulla durata dei Film
+    if (getDurata() > Film2.getDurata()) return true;
     return false;
 }
 
-film& film::operator=(const film& otherFilm)
+Film& Film::operator=(const Film& otherFilm)
 {
     if (this != &otherFilm)
     {
@@ -63,13 +63,13 @@ film& film::operator=(const film& otherFilm)
 
 
 /* SECONDA VERSIONE
-bool film::operator>(const film& film2) {
-    // Confronto sulla data di produzione dei film (dove maggiore significa più vecchio)
-    return getAnno() < film2.getAnno();
+bool Film::operator>(const Film& Film2) {
+    // Confronto sulla data di produzione dei Film (dove maggiore significa piï¿½ vecchio)
+    return getAnno() < Film2.getAnno();
 }
 */
 
-film::film(char* titolo, int durata, int anno)
+Film::Film(char* titolo, int durata, int anno)
 {
     _titolo = new char[strlen(titolo) + 1];
     strcpy(_titolo, titolo);
@@ -77,44 +77,44 @@ film::film(char* titolo, int durata, int anno)
     _anno = anno;
 }
 
-film::~film()
+Film::~Film()
 {
     delete[] _titolo;
 }
 
-char* film::getTitolo() const
+char* Film::getTitolo() const
 {
     return _titolo;
 }
 
-void film::setTitolo(const char* titolo)
+void Film::setTitolo(const char* titolo)
 {
     delete[] _titolo;
     _titolo = new char[strlen(titolo) + 1];
     strcpy(_titolo, titolo);
 }
 
-int film::getDurata() const
+int Film::getDurata() const
 {
     return _durata;
 }
 
-void film::setDurata(int durata)
+void Film::setDurata(int durata)
 {
     _durata = durata;
 }
 
-int film::getAnno() const
+int Film::getAnno() const
 {
     return _anno;
 }
 
-void film::setAnno(int anno)
+void Film::setAnno(int anno)
 {
     _anno = anno;
 }
 
-void film::stampaFilm()
+void Film::stampaFilm()
 {
     cout << "Titolo: " << _titolo << endl;
     cout << "Durata: " << _durata << " minuti" << endl;
@@ -194,7 +194,7 @@ int main()
     int a[5] = {3, 2, 6, 1, 4};
     Impiegato imp[3] = {{"Mario", "Rossi"}, {"Paola", "Bianchi"}, {"Riccardo", "Bianccardi"}};
 
-    film filmArray[5] =
+    Film FilmArray[5] =
     {
         {"Matrix", 120, 1999},
         {"Inception", 148, 2010},
@@ -206,17 +206,17 @@ int main()
     cout << "Prima di ordinare:" << endl;
     for (int i = 0; i < 5; ++i)
     {
-        filmArray[i].stampaFilm();
+        FilmArray[i].stampaFilm();
     }
 
     BubbleSort<int>(a, 5);
     BubbleSort<Impiegato>(imp, 3);
-    BubbleSort<film>(filmArray, 5);
+    BubbleSort<Film>(FilmArray, 5);
 
-    cout << "\nDopo l'ordinamento dei film:" << endl;
+    cout << "\nDopo l'ordinamento dei Film:" << endl;
     for (int i = 0; i < 5; ++i)
     {
-        filmArray[i].stampaFilm();
+        FilmArray[i].stampaFilm();
     }
 
     return 0;
