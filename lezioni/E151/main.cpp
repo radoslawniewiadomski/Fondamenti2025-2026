@@ -1,9 +1,9 @@
-#include "film.h"
 #include <iostream>
 #include <iostream>
 #include <cstring>
 using namespace std;
 
+#include "Film.h"
 #include "List.h"
 
 
@@ -15,17 +15,6 @@ ostream& operator<<(ostream& os, const film& film)
     return os;
 }
 
-/*
-istream& operator>>(istream& is, film& film)
-{
-    char temp[100];
-    is >> temp;
-    film._titolo = new char[strlen(temp) + 1];
-    strcpy(film._titolo, temp);
-    is >> film._durata >> film._anno;
-    return is;
-}
-*/
 
 int main()
 {

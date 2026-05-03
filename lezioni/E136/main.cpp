@@ -71,6 +71,7 @@ ostream& operator<<(ostream& os, const Person& p)
 int main()
 {
     srand(time(0));
+    
     cout<< "Il vettore di persone: "<< endl;
     Vettore<Person, 2> v1; // crea il vettore di 2 persone, per le persone viene utilisato il costruttore di default
     v1.stampa(); // Stampa il vettore di 2 persone

@@ -13,6 +13,7 @@ public:
     Libro();
     Libro(const char* autore, const char* titolo, int anno);
     Libro(const Libro& other);              // costruttore di copia
+
     Libro& operator=(const Libro& other);   // operatore di assegnazione
 
     // Distruttore
@@ -28,6 +29,8 @@ public:
 
     void stampa() const;
 };
+
+////////////////////////////////////////7
 
 class Libreria {
     int _id;

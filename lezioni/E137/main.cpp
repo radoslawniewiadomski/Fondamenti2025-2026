@@ -36,8 +36,8 @@ T Calcolatrice<T, Funzione>::eseguiOperazione() {
 
 int main() {
     // Creazione di istanze di Calcolatrice specializzate per diverse operazioni
-    Calcolatrice<int, somma> calcSomma(5, 3);
-    Calcolatrice<int, sottrazione> calcSottrazione(5, 3);
+    Calcolatrice<int, somma> calcSomma(5.9, 2.9);
+    Calcolatrice<int, sottrazione> calcSottrazione(5.9, 3.9);
     Calcolatrice<int, moltiplicazione> calcMoltiplicazione(5, 3);
 
     // Esempio di utilizzo

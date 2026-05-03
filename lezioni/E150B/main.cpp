@@ -1,6 +1,6 @@
 #include <iostream>
-
 using namespace std;
+#include "Punto.h"
 
 #include "List.h"
 int main()
@@ -12,12 +12,22 @@ int main()
     l.insertBack(120);
     l.insertAfter(l.find(20), 500);
     l.print(); // stampa: 20, 500, 10, 120
-    // rimozione di nodi
 
-    l.removeAt(l.find(20));
-    l.removeFront();
-    l.removeBack();
-    l.print(); // stampa: 10
+    // rimozione di nodi
+    l.clear();
+    l.print(); // stampa: 20, 500, 10, 120
+    
+  /*  
+    List<Punto> l2; // dichiarazione di oggetto lista
+    // inserimento di nodi
+    l2.insertFront(Punto(10,10));
+    l2.insertFront(Punto(20,20));
+    l2.insertBack(Punto(120,120));
+    l2.insertAfter(l2.find(Punto(20,20)),Punto(500,500));
+
+    l2.print(); // stampa i 4 punti
+
+    */
 
     return 0;	// distruzione della lista
 }

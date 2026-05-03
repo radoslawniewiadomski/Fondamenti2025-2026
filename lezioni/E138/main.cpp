@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
 
-template<typename T>
-T somma(T a, T b) {
+template<typename Z>
+Z somma(Z a, Z b) {
     return a + b;
 }
 
-template<typename T>
-T sottrazione(T a, T b) {
+template<typename W>
+W sottrazione(W a, W b) {
     return a - b;
 }
 

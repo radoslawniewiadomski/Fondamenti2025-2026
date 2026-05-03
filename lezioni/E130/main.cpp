@@ -160,22 +160,30 @@ ostream& operator<<(ostream& os, const Person& p)
 ////////////////////////////////////////////////////
 
 template <typename T, typename U>
-class Coppia
-{
+class Coppia {
+private:
     T primo;
     U secondo;
 
 public:
-    Coppia(T p, U s) : primo(p), secondo(s) {}
-    void stampaCoppia();
+    // Costruttore
+    Coppia(T p, U s);
+
+    // Metodo stampa
+    void stampaCoppia() const;
 };
 
+// ===== IMPLEMENTAZIONE =====
 
 template <typename T, typename U>
-void Coppia<T, U>::stampaCoppia()
-{
+Coppia<T, U>::Coppia(T p, U s) : primo(p), secondo(s) {}
+
+template <typename T, typename U>
+void Coppia<T, U>::stampaCoppia() const {
     cout << "Primo elemento: " << primo << ", Secondo elemento: " << secondo << endl;
 }
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -185,7 +193,10 @@ int main()
     coppia1.stampaCoppia();
 
     Coppia<Person, Film> coppia2(Person("John", "Smith"),Film("Shrek",120,2000));
+    Coppia<Person, Person> coppia2(Person("John", "Smith"),Person("Mary", "Smith"));
+
     coppia2.stampaCoppia();
+
 
     return 0;
 }

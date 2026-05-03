@@ -42,11 +42,20 @@ int main()
     Vettore<double, 5> v1; // Vettore di 5 double
     v1.stampa(); // Stampa il vettore di 5 double
 
+    cout<<endl;
     v1.inserisciCasuale(); // Inserimento casuale di numeri nel vettore
+    
+    cout<<endl;
     v1.stampa(); // Stampa il vettore di 5 double
+    cout<<endl;
+
 
     Vettore<int, 10> v2; // Vettore di 10 int
+        cout<<endl;
+
     v2.inserisciCasuale(); // Inserimento casuale di numeri nel vettore
+    cout<<endl;
+
     v2.stampa(); // Stampa il vettore di 10 int
 
     return 0;

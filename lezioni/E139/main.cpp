@@ -2,7 +2,6 @@
 #include <iostream>
 using namespace std;
 
-
 int main() {
     int lunghezzaTitolo;
     cout << "Inserisci la lunghezza del titolo del film: ";

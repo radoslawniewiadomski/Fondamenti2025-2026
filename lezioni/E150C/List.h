@@ -215,6 +215,8 @@ Node<T>* List<T>::find(const T& data) const
 template <typename T>
 void List<T>::print() const
 {
+    cout<<"\nLa lista e' composta da :"<<endl;
+
     Node<T>* p = _head;
     if (p != 0)
     {

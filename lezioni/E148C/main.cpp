@@ -10,8 +10,10 @@ int main() {
     l.insertFront(20);
     l.insertBack(120);
     l.insertAfter(l.find(20), 500);
-    l.removeAt(l.find(20));
 
+
+    l.removeAt(l.find(20));
+    
     l.print();
     cout << endl;
 

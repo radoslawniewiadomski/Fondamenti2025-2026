@@ -2,9 +2,9 @@
 #include <iostream>
 using namespace std;
 
-//L'inferfaccia e eguale a E139
-//La definizione della classe Film e diversa
-//Il main e eguale al E139
+//L'inferfaccia e' eguale alla interfaccia di E139
+//La definizione della classe Film e' diversa
+//Il main fi E141 e' eguale al main di E139
 
 int main() {
     int lunghezzaTitolo;

@@ -1,183 +1,48 @@
 #include <iostream>
-#include <cstring>
-
 using namespace std;
 
-////////////////////////////////////////////////////////////////////////////////
-//classe Person
+template <typename T>
+class Esame {
+private:
+    double scritto;
+    double orale;
 
-class Person
-{
-    char _nome[32];
-    char _cognome[32];
 public:
-    Person(const char* nome, const char* cognome);
-    Person();
-    void stampa() const;
-
-    friend ostream& operator<<(ostream& os, const Person& p);
-
+    // Dichiarazioni
+    Esame(double s, double o);
+    double votoFinale() const;
 };
 
-Person::Person()
-{
-    strcpy(_nome, "N/D");
-    strcpy(_cognome, "N/D");
+// ===== DEFINIZIONI =====
+
+template <typename T>
+Esame<T>::Esame(double s, double o) : scritto(s), orale(o) {}
+
+template <typename T>
+double Esame<T>::votoFinale() const {
+    return T::calcola(scritto, orale);
 }
 
-Person::Person(const char* nome, const char* cognome)
-{
-    strcpy(_nome, nome);
-    strcpy(_cognome, cognome);
-}
-
-void Person::stampa() const
-{
-    cout << "Nome: " << _nome << ", Cognome: " << _cognome << endl;
-}
-
-
-////////////////////////////////////////////////////////////
-//classe Film
-
-class Film
-{
-    char* _titolo;
-    int _durata;
-    int _anno;
-
+class MediaSemplice {
 public:
-    // Costruttori
-    Film();
-    Film(const char* titolo, int durata, int anno);
-    // Costruttore di copia
-    Film(const Film& otherFilm);
-    // Distruttore
-    ~Film();
-
-    friend ostream& operator<<(ostream& os, const Film& film);
-
-
-    // Selettori e modificatori
-    const char* getTitolo() const;
-    void setTitolo(const char* titolo);
-    int getDurata() const;
-    void setDurata(int durata);
-    int getAnno() const;
-    void setAnno(int anno);
-
-    void stampaFilm() const;
-};
-
-// Definizioni delle funzioni
-Film::Film()
-{
-    _titolo = new char[4];
-    strcpy(_titolo, "N/D");
-    _durata = 0;
-    _anno = 0;
-}
-
-Film::Film(const char* titolo, int durata, int anno)
-{
-    this->_titolo = new char[strlen(titolo) + 1];
-    strcpy(this->_titolo, titolo);
-    this->_durata = durata;
-    this->_anno = anno;
-}
-
-Film::Film(const Film& otherFilm)
-{
-    _titolo = new char[strlen(otherFilm._titolo) + 1];
-    strcpy(_titolo, otherFilm._titolo);
-    _durata = otherFilm._durata;
-    _anno = otherFilm._anno;
-}
-
-Film::~Film()
-{
-    delete[] _titolo;
-}
-
-const char* Film::getTitolo() const
-{
-    return _titolo;
-}
-
-void Film::setTitolo(const char* titolo)
-{
-    delete[] this->_titolo;
-    this->_titolo = new char[strlen(titolo) + 1];
-    strcpy(this->_titolo, titolo);
-}
-
-int Film::getDurata() const
-{
-    return _durata;
-}
-
-void Film::setDurata(int durata)
-{
-    this->_durata = durata;
-}
-
-int Film::getAnno() const
-{
-    return _anno;
-}
-
-void Film::setAnno(int anno)
-{
-    this->_anno = anno;
-}
-
-void Film::stampaFilm() const
-{
-    cout << "Titolo: " << _titolo << endl;
-    cout << "Durata: " << _durata << " minuti" << endl;
-    cout << "Anno: " << _anno << endl;
-}
-
-
-ostream& operator<<(ostream& os, const Film& film)
-{
-    os << "Titolo: " << film._titolo << ", Durata: " << film._durata << " minuti, Anno: " << film._anno;
-    return os;
-}
-
-
-ostream& operator<<(ostream& os, const Person& p)
-{
-    os << "Name: " << p._nome << ", Cognome: " << p._cognome;
-    return os;
-}
-
-////////////////////////////////////////////////////
-//Il template di classe Coppia
-
-template <typename T, typename U>
-class Coppia
-{
-    T primo;
-    U secondo;
-
-public:
-    Coppia(T p, U s) : primo(p), secondo(s) {}
-
-    void stampaCoppia()
-    {
-        cout << "Primo elemento: " << primo << ", Secondo elemento: " << secondo << endl;
-
+    static double calcola(double a, double b) {
+        return (a + b) / 2.0;
     }
 };
 
-int main()
-{
-    Coppia<double, double> coppia1(10, 3.14);
-    coppia1.stampaCoppia();
+class MediaPesata {
+public:
+    static double calcola(double a, double b) {
+        return a * 0.7 + b * 0.3;
+    }
+};
 
-    Coppia<Person, Person> coppia2(Person("John", "Smith"),Person("Mary", "Smith"));
-    coppia2.stampaCoppia();
 
-    return 0;
+
+int main() {
+    Esame<MediaSemplice> e1(24, 28);
+    Esame<MediaPesata> e2(24, 28);
+
+    cout << e1.votoFinale() << endl;
+    cout << e2.votoFinale() << endl;
 }

@@ -59,7 +59,7 @@ public:
     int getAnno() const;
     void setAnno(int anno);
 
-    void stampaFilm() const;
+    void stampa() const;
 };
 
 // Definizioni delle funzioni
@@ -114,7 +114,7 @@ void Film::setAnno(int anno) {
     this->_anno = anno;
 }
 
-void Film::stampaFilm() const {
+void Film::stampa() const {
     cout << "Titolo: " << _titolo << endl;
     cout << "Durata: " << _durata << " minuti" << endl;
     cout << "Anno: " << _anno << endl;
@@ -139,21 +139,30 @@ template <typename T, typename U>
 class Coppia {
     T primo;
     U secondo;
-
 public:
-    Coppia(T p, U s) : primo(p), secondo(s) {}
+    Coppia(T p, U s);
     void stampaCoppia();
 };
 
 template <typename T, typename U>
- void Coppia<T, U>::stampaCoppia() {
-    cout << "Primo elemento: ";
-    primo.stampa();
+  Coppia<T, U>::Coppia(T p, U s) : primo(p), secondo(s) {}
+  
 
-    cout << "Secondo elemento: ";
-    secondo.stampaFilm();
+  /*
+ void Coppia<T, U>::stampaCoppia() {
+    cout << "Primo elemento: " << primo << ", Secondo elemento: " << secondo << endl;
+ }
+*/
+
+
+template <typename T, typename U>
+  void Coppia<T, U>::stampaCoppia() {
+    cout << "Primo elemento: ";
+    _primo.stampa();
+    cout << ", Secondo elemento: ";
+    _secondo.stampa();
     cout << endl;
-}
+    }
 
 
 int main() {
@@ -161,7 +170,6 @@ int main() {
 
     //Coppia<int, double> coppia1(10, 3.14);
     //coppia1.stampaCoppia();
-
 
     Coppia<Person, Film> coppia2(Person("John", "Smith"),Film("Shrek",120,2000));
     coppia2.stampaCoppia();

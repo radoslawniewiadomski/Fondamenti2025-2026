@@ -25,6 +25,11 @@ public:
     // Operatore di estrazione (cin >> p)
     friend istream& operator>>(istream& is, Punto& p);
 
+
+
+
+
+
     // Operatore somma tra due punti
     // const: non modifica l’oggetto chiamante
     Punto operator+(const Punto& p) const;
@@ -130,11 +135,22 @@ istream& operator>>(istream& is, Punto& p) {
 // =========================
 
 int main() {
-    Punto p(5.0, 2.0);
-    Punto q(4.0, 1.0);
+
+
+    Punto p, q;
+	cout << "Inserire le coordinate di punto p: ";
+	cin >> p; 
+
+	cout << "Inserire le coordinate di punto q: ";
+	cin >> q; 
+
+	cout << "Coordinate di p " << p <<endl; 
+
+	cout << "Coordinate di q " << q; 
+    
 
     // uso combinato di operatori << e +
-    cout << "La somma di " << p << " e " << q << " vale " << p + q << endl;
+    //cout << "La somma di " << p << " e " << q << " vale " << p + q << endl;
 
     return 0;
 }

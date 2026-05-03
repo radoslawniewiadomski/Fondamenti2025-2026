@@ -145,12 +145,15 @@ class Coppia {
     U secondo;
 
 public:
-    Coppia(T p, U s) : primo(p), secondo(s) {}
+    Coppia(T p, U s);
     void stampaCoppia();
 
     template <typename Z>
     void stampaOggetto(const Z& oggetto);
 };
+
+template <typename T, typename U>
+Coppia<T, U>::Coppia(T p, U s) : primo(p), secondo(s) {}
 
 template <typename T, typename U>
  void Coppia<T, U>::stampaCoppia() {

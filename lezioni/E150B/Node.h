@@ -1,7 +1,30 @@
-#include "Node.h"
+#ifndef NODE_H
+#define NODE_H
 
 template <typename T>
-Node<T>::Node(): _data(0), _next(0) {}
+class Node
+{
+    T _data;
+    Node<T>* _next;
+
+public:
+    // costruttori e distruttore
+    Node();
+    Node(const T& data, Node<T>* next);
+    Node(const Node<T>& node);
+    ~Node();
+
+    // selettori
+    const T& getData() const;
+    Node<T>* getNext() const;
+
+    // modificatori
+    void setData(const T& data);
+    void setNext(Node<T>* next);
+};
+
+template <typename T>
+Node<T>::Node(): _data(), _next(0) {}
 
 template <typename T>
 Node<T>::Node(const T& data, Node<T>* next): _data(data), _next(next) {}
@@ -37,4 +60,4 @@ void Node<T>::setNext(Node<T>* next)
 }
 
 
-
+#endif // NODE_H
