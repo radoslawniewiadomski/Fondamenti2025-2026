@@ -6,15 +6,15 @@ using namespace std;
 
 int main()
 {
-    Node<int> test1;
-    
-    cout<<test1.getData()<<endl;
 
-/*
-    Node<Punto> test2;    
-    cout<<test2.getData().getX();
-    cout<<test2.getData().getY()<<endl;
+    /*
+    Node<int> test1;    
+    cout<<test1.getData()<<endl;
 */
+
+    Node<Punto> test2;    
+
+    cout<<test2.getData()<<endl;
 
     return 0;
 }

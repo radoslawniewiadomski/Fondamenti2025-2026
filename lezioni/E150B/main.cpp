@@ -5,6 +5,8 @@ using namespace std;
 #include "List.h"
 int main()
 {
+
+  /*
     List<int> l; // dichiarazione di oggetto lista
     // inserimento di nodi
     l.insertFront(10);
@@ -16,8 +18,8 @@ int main()
     // rimozione di nodi
     l.clear();
     l.print(); // stampa: 20, 500, 10, 120
-    
-  /*  
+    */
+  
     List<Punto> l2; // dichiarazione di oggetto lista
     // inserimento di nodi
     l2.insertFront(Punto(10,10));
@@ -26,8 +28,6 @@ int main()
     l2.insertAfter(l2.find(Punto(20,20)),Punto(500,500));
 
     l2.print(); // stampa i 4 punti
-
-    */
 
     return 0;	// distruzione della lista
 }
